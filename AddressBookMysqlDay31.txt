@@ -1,0 +1,115 @@
+MySQL [localhost:33060+ ssl] SQL> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| payroll_service    |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.1810 sec)
+MySQL [localhost:33060+ ssl] SQL> create database addressbook;
+Query OK, 1 row affected (0.8933 sec)
+MySQL [localhost:33060+ ssl] SQL> show databases;
++--------------------+
+| Database           |
++--------------------+
+| addressbook        |
+| information_schema |
+| mysql              |
+| payroll_service    |
+| performance_schema |
+| sys                |
++--------------------+
+
+mysql> use addressbook;
+Database changed
+mysql> create table personDetails(firstName varchar(55),lastName varchar(55),address varchar(55),cityName varchar(55),zip int,phoneNumber int,email varchar(55),personId int);
+Query OK, 0 rows affected (0.33 sec)
+
+mysql> show tables;
++-----------------------+
+| Tables_in_addressbook |
++-----------------------+
+| persondetails         |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> desc personDetails;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| firstName   | varchar(55) | YES  |     | NULL    |       |
+| lastName    | varchar(55) | YES  |     | NULL    |       |
+| address     | varchar(55) | YES  |     | NULL    |       |
+| cityName    | varchar(55) | YES  |     | NULL    |       |
+| zip         | int         | YES  |     | NULL    |       |
+| phoneNumber | int         | YES  |     | NULL    |       |
+| email       | varchar(55) | YES  |     | NULL    |       |
+| personId    | int         | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> insert into personDetails(firstName,lastName,address,cityName,zip,phoneNumber,email,personId) values('Pallavi','Parteti','Maharashtra Amaravati','Amaravati',274702,705223,'pallavi123@gmail.com',1);
+Query OK, 1 row affected (0.15 sec)
+
+mysql> select *from personDetails;
++-----------+----------+------------------------+-----------+--------+-------------+--------------------+----------+
+| firstName | lastName | address                | cityName  | zip    | phoneNumber | email              | personId |
++-----------+----------+------------------------+-----------+--------+-------------+--------------------+----------+
+| Pallavi   | Parteti  | Maharashtra Amaravati  | Amaravati | 444601 |      705223 |pallavi123@gmail.com|        1 |
++-----------+----------+------------------------+-----------+--------+-------------+--------------------+----------+
+1 row in set (0.00 sec)
+
+mysql> insert into personDetails(firstName,lastName,address,cityName,zip,phoneNumber,email,personId) values('Samiksha','Dhabale','Maharashtra Pune','Pune',411001,775723,'samiksha12@gmail.com',2);
+Query OK, 1 row affected (0.20 sec)
+
+mysql> insert into personDetails(firstName,lastName,address,cityName,zip,phoneNumber,email,personId) values('Akash','Kokate','MP Bhopal','Bhopal',462001,705732,'akash123@gmail.com',3);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> show tables;
++-----------------------+
+| Tables_in_addressbook |
++-----------------------+
+| persondetails         |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select *from personDetails;
++-----------+----------+------------------------+-----------+--------+-------------+----------------------+----------+
+| firstName | lastName | address                | cityName  | zip    | phoneNumber | email                | personId |
++-----------+----------+------------------------+-----------+--------+-------------+----------------------+----------+
+| Pallavi   | Parteti  | Maharashtra Amaravati  | Amaravati | 444601 |      705223 | pallavi123@gmail.com |        1 |
+| Samiksha  | Dhabale  | Maharashtra Pune       | Pune      | 411001 |      775723 | samiksha12@gmail.com |        2 |
+| Akash     | Kokate   | MP Bhopal              | Bhopal    | 462001 |      705732 | akash123@gmail.com   |        3 |
++-----------+----------+------------------------+-----------+--------+-------------+----------------------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select firstName,lastName from personDetails;
++-----------+----------+
+| firstName | lastName |
++-----------+----------+
+| Pallavi   | Parteti  |
+| Samiksha  | Dhabale  |
+| Akash     | Kokate   |
++-----------+----------+
+3 rows in set (0.00 sec)
+
+mysql> alter table personDetails;
+Query OK, 0 rows affected (0.1 sec)
+mysql> desc personDetails;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| firstName   | varchar(55) | YES  |     | NULL    |       |
+| lastName    | varchar(55) | YES  |     | NULL    |       |
+| address     | varchar(55) | YES  |     | NULL    |       |
+| cityName    | varchar(55) | YES  |     | NULL    |       |
+| zip         | int         | YES  |     | NULL    |       |
+| phoneNumber | int         | YES  |     | NULL    |       |
+| email       | varchar(55) | YES  |     | NULL    |       |
+| personId    | int         | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
